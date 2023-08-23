@@ -1,0 +1,57 @@
+#Defining H2 Database
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    password: ''
+    url: jdbc:h2:mem:airline
+    username: sa
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+
+  security:
+    user:
+      name: test
+      password: test
+
+  h2:
+    console:
+      enabled: true
+      path: /h2
+
+#Logging details
+logging:
+  level:
+    com:
+      abn:
+        airline: DEBUG
+    org:
+      hibernate: ERROR
+      springframework:
+        web: INFO
+
+management:
+  security:
+    enabled: false
+  endpoint:
+    health:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health, beans, loggers
+
+#Defining PORT and Error message details config
+server:
+  port: 8081
+
+  error:
+    include-binding-errors: always
+    include-exception: false
+    include-message: never
+    include-stacktrace: never
